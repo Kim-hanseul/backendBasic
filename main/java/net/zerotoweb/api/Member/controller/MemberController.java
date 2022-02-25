@@ -1,7 +1,7 @@
 package net.zerotoweb.api.Member.controller;
 
 import lombok.RequiredArgsConstructor;
-import net.zerotoweb.api.Member.domain.MemberDTO;
+import net.zerotoweb.api.Member.domain.*;
 import net.zerotoweb.api.Member.service.MemberService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,17 +21,21 @@ import java.util.Date;
  */
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/member")
 public class MemberController {
-
   private final MemberService service;
 
-  @GetMapping("/member/bmi/김한슬/177.4/73.2")
-  public String getBmi(@PathVariable String name,
-                       @PathVariable double height,
-                       @PathVariable double weight) {
-    System.out.println(" 리액트에서 넘어온 이름: "+name);
-    System.out.println(" 리액트에서 넘어온 키 : "+height);
-    System.out.println(" 리액트에서 넘어온 몸무게 : "+weight);
-    return "BMI 는 정상";
-}
+    @PostMapping("/calc")
+  public String calc(@RequestBody CalcDTO calc){
+    return service.calc(calc);
+  }
+  @PostMapping("/bmi")
+  public String bmi(@RequestBody BmiDTO bmi){
+    return service.bmi(bmi);
+  }
+  @PostMapping("/grade")
+  public String grade(@RequestBody GradeDTO grade){
+    return service.grade(grade);
+  }
+
 }

@@ -1,8 +1,6 @@
 package net.zerotoweb.api.Member.service;
 
-import lombok.Data;
-import net.zerotoweb.api.Buy.Domian.BuyDTO;
-import net.zerotoweb.api.Member.domain.MemberDTO;
+import net.zerotoweb.api.Member.domain.*;
 
 /**
  * packageName: net.zerotoweb.api.common.service
@@ -17,19 +15,11 @@ import net.zerotoweb.api.Member.domain.MemberDTO;
  */
 
 public interface MemberService {
-  String memList();
 
-  String memInform();
+    String calc(CalcDTO calc);
 
-  String mailList();
+    String bmi(BmiDTO bmi);
 
-  String reserve();
+    String grade(GradeDTO grade);
 
-  String reserveList();
-
-  String bmi();
-
-  String calc();
-
-  String grade();
 }
